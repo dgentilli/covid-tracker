@@ -7,12 +7,14 @@ const DisplayControl = (props) => {
   const [countries, setCountries] = useState([]);
   const [data, setData] = useState([]);
 
-  useEffect(async () => {
-    getSummary();
-    const countryList = await getCountryList();
-    setCountries(countryList);
-    const summaryData = await getSummary();
-    setData(summaryData);
+  useEffect(() => {
+    const getData = async () => {
+      const summaryData = await getSummary();
+      const countryList = await getCountryList();
+      setCountries(countryList);
+      setData(summaryData);
+    };
+    getData();
   }, []);
 
   return (
