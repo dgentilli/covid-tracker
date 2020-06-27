@@ -41,7 +41,6 @@ code {
 .center {
   grid-area: center;
   text-align: center;
-  border: 1px solid #a8a796;
 }
 
 .side-d {
