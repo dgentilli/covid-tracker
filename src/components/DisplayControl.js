@@ -16,11 +16,10 @@ const DisplayControl = (props) => {
     };
     getData();
   }, []);
-
+  // <Pulldown countries={countries} />
   return (
     <div>
       <DataDisplay data={data} />
-      <Pulldown countries={countries} />
     </div>
   );
 };

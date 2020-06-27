@@ -29,11 +29,14 @@ code {
 
 .top {
   grid-area: top;
-  display: flex;
   background: linear-gradient(180deg, #ffea08, #fff);
 }
 
-.top div {
+.top-card-container {
+  display: flex;
+}
+
+.top-card-container div {
   flex: 1;
   text-align: center;
 }

@@ -31,13 +31,16 @@ const DataDisplay = (props) => {
   return (
     <div id="data-display-container">
       <div className="top">
-        <Card title={"New Cases"} data={newCases} updated={dateUpdated} />
-        <Card title={"Total Cases"} data={totalCases} updated={dateUpdated} />
-        <Card
-          title={"Active Cases"}
-          data={totalActiveCases}
-          updated={dateUpdated}
-        />
+        <h1>COVID TRACKER</h1>
+        <div className="top-card-container">
+          <Card title={"New Cases"} data={newCases} updated={dateUpdated} />
+          <Card title={"Total Cases"} data={totalCases} updated={dateUpdated} />
+          <Card
+            title={"Active Cases"}
+            data={totalActiveCases}
+            updated={dateUpdated}
+          />
+        </div>
       </div>
       <div className="center">
         <Chart
