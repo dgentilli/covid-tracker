@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import DataDisplay from "./DataDisplay";
-import Pulldown from "./Pulldown";
 import { getSummary, getCountryList } from "../api/fetchDataApi";
 
 const DisplayControl = (props) => {
@@ -16,10 +15,9 @@ const DisplayControl = (props) => {
     };
     getData();
   }, []);
-  // <Pulldown countries={countries} />
   return (
     <div>
-      <DataDisplay data={data} />
+      <DataDisplay data={data} countries={countries} />
     </div>
   );
 };

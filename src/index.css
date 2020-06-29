@@ -32,6 +32,15 @@ code {
   background: linear-gradient(180deg, #ffea08, #fff);
 }
 
+.pulldown-container {
+  text-align: center;
+}
+
+.pulldown-container select {
+  padding: 5px;
+  border-radius: 10px;
+}
+
 .top-card-container {
   display: flex;
 }
