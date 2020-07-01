@@ -7,9 +7,9 @@ import DisplayControl from "./components/DisplayControl";
 
 function App() {
   return (
-    <Provider>
+    <Provider store={store}>
       <div className="App">
-        <DisplayControl store={store} />
+        <DisplayControl />
       </div>
     </Provider>
   );

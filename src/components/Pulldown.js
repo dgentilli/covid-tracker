@@ -1,23 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 
 const Pulldown = (props) => {
-  const [countryList, setCountryList] = useState([]);
-  console.log("Pulldown props: ", props);
-  console.log("countryList: ", countryList);
+  const countryReduxState = useSelector((state) => state.countryReducer);
+  const { countryList } = countryReduxState;
+  const countries = countryList.map((country) => country.Country);
+  const alphaList = countries.sort();
 
-  useEffect(() => {
-    let countryMap =
-      props.countries.length > 0
-        ? props.countries.map((country) => country.Country).sort()
-        : [];
-    setCountryList(countryMap);
-  }, [props.countries]);
   return (
     <div className="pulldown-container">
       <select>
         <option>Global</option>
-        {countryList
-          ? countryList.map((country, key) => (
+        {alphaList.length > 0
+          ? alphaList.map((country, key) => (
               <option key={key} value={country}>
                 {country}
               </option>
