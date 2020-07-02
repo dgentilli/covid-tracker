@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectCountry } from "./redux/actions";
 import * as actions from "./redux/actions";
 import { getCountryList } from "../api/fetchDataApi";
 
@@ -15,7 +14,7 @@ const Pulldown = () => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    dispatch(selectCountry(e.target.value));
+    dispatch(actions.selectCountry(e.target.value));
   };
 
   useEffect(() => {
