@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "./redux/actions";
+import { getSummary } from "../api/fetchDataApi";
+
 import Card from "./Card";
 import Chart from "./Chart";
-import Pulldown from "./Pulldown";
 
-const DataDisplay = (props) => {
+const DataDisplay = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getSummary();
+      dispatch(actions.setCountryData(data));
+    };
+    getData();
+  }, []);
+  const countryReduxState = useSelector((state) => state.countryReducer);
+  const { selectedCountry, countryData } = countryReduxState;
+  console.log("countryData.Global from datadisplay: ", countryData.Global);
+
+  // const newConfirmed =
+  //   countryData && selectedCountry === "Worldwide"
+  //     ? countryData.Global.NewConfirmed
+  //     : countryData && countryData.Countries.Country === selectedCountry
+  //     ? countryData.Countries.Country.NewConfirmed
+  //     : "Loading...";
+
+  // const newConfirmed = countryData
+  //   ? countryData.Global.NewConfirmed
+  //   : "Loading...";
+
+  // console.log("newConfirmed", newConfirmed);
+
   return <h1>DataDisplay</h1>;
   // console.log("DataDisplay props: ", props);
-
-  // const newConfirmed = props.data.Global
-  //   ? props.data.Global.NewConfirmed
-  //   : null;
 
   // const totalConfirmed = props.data.Global
   //   ? props.data.Global.TotalConfirmed
