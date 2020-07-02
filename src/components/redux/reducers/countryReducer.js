@@ -1,6 +1,6 @@
 const initialState = {
   countryList: [],
-  selectedCountry: "Global",
+  selectedCountry: "Worldwide",
   countryData: {},
 };
 
