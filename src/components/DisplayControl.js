@@ -8,7 +8,7 @@ import { getSummary, getCountryList } from "../api/fetchDataApi";
 
 const DisplayControl = (props) => {
   const dispatch = useDispatch();
-  // const [countries, setCountries] = useState([]);
+  const [countries, setCountries] = useState([]);
   // const [data, setData] = useState([]);
 
   useEffect(() => {
