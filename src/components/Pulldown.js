@@ -1,38 +1,23 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as actions from "./redux/actions";
-import { getCountryList } from "../api/fetchDataApi";
+import React, { useState, useEffect } from "react";
 
-const Pulldown = () => {
-  const countryReduxState = useSelector((state) => state.countryReducer);
-  const { countryList, selectedCountry } = countryReduxState;
-  const countries = countryList
-    ? countryList.map((country) => country.Country)
-    : null;
-  const alphaList = countries ? countries.sort() : null;
-
-  const dispatch = useDispatch();
-
-  const handleChange = (e) => {
-    dispatch(actions.selectCountry(e.target.value));
-  };
+const Pulldown = (props) => {
+  const [countryList, setCountryList] = useState([]);
+  console.log("Pulldown props: ", props);
+  console.log("countryList: ", countryList);
 
   useEffect(() => {
-    const getCountries = async () => {
-      const data = await getCountryList();
-      dispatch(actions.setCountryList(data));
-    };
-    getCountries();
-  }, [selectedCountry]);
-
+    let countryMap =
+      props.countries.length > 0
+        ? props.countries.map((country) => country.Country).sort()
+        : [];
+    setCountryList(countryMap);
+  }, [props.countries]);
   return (
     <div className="pulldown-container">
-      <label>Select a Country:</label>
-      <br></br>
-      <select value={selectedCountry} onChange={handleChange}>
-        <option value={"Worldwide"}>Worldwide</option>
-        {alphaList && alphaList.length > 0
-          ? alphaList.map((country, key) => (
+      <select>
+        <option>Global</option>
+        {countryList
+          ? countryList.map((country, key) => (
               <option key={key} value={country}>
                 {country}
               </option>
