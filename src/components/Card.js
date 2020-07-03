@@ -7,15 +7,16 @@ const CardContainer = styled.div`
 `;
 
 const Title = styled.h3`
-  padding-bottom: 10px;
+  color: white;
 `;
 
 const DataField = styled.h2`
   padding-top: 5px;
+  padding-bottom: 30px;
 `;
 
 const Updated = styled.p`
-  color: #a8a796;
+  color: white;
 `;
 
 const Card = (props) => {

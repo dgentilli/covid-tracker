@@ -9,6 +9,8 @@ body {
 
 h1 {
   text-align: center;
+  margin-top: 0;
+  color: white;
 }
 
 code {
@@ -20,7 +22,7 @@ code {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
     "top top top"
     "center center side-r"
@@ -29,17 +31,22 @@ code {
 
 .top {
   grid-area: top;
-  background: linear-gradient(180deg, #ffea08, #fff);
+  /* background: linear-gradient(180deg, #c5b506, #ccc); */
+  background: linear-gradient(180deg, rgb(88, 76, 76), #ccc);
 }
 
 .pulldown-container {
   text-align: center;
-  background-color: #ffea08;
+  background-color: rgb(88, 76, 76);
 }
 
 .pulldown-container select {
   padding: 5px;
   border-radius: 10px;
+}
+
+select:focus {
+  outline: none;
 }
 
 .top-card-container {
@@ -54,6 +61,7 @@ code {
 .center {
   grid-area: center;
   text-align: center;
+  background: linear-gradient(180deg, #ccc, #ddd);
 }
 
 .side-d {
@@ -61,7 +69,8 @@ code {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background: linear-gradient(180deg, #e81f10, #fff);
+  background: linear-gradient(180deg, #e81f10, rgb(88, 76, 76));
+  border-radius: 4px;
 }
 
 .side-r {
@@ -69,5 +78,6 @@ code {
   display: flex;
   flex-direction: column;
   text-align: center;
-  background: linear-gradient(180deg, #24a822, #fff);
+  background: linear-gradient(180deg, #24a822, rgb(88, 76, 76));
+  border-radius: 4px;
 }

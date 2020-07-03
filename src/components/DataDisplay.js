@@ -4,7 +4,6 @@ import Chart from "./Chart";
 
 const DataDisplay = (props) => {
   const [getCountryData, setGetCountryData] = useState([]);
-  //const [newConfirmed, setNewConfirmed] = useState("");
   console.log("DataDisplay props: ", props);
   console.log("getCountryData", getCountryData);
   const selectedCountry = props.selectedCountry ? props.selectedCountry : null;
@@ -29,24 +28,40 @@ const DataDisplay = (props) => {
 
   //const newConfirmed = 10;
 
-  const totalConfirmed = props.data.Global
-    ? props.data.Global.TotalConfirmed
-    : null;
+  const totalConfirmed =
+    selectedCountry === "Global" && props.data.Global
+      ? props.data.Global.TotalConfirmed
+      : getCountryData.length > 0
+      ? getCountryData[0].TotalConfirmed
+      : "Loading";
 
-  const totalDeaths = props.data.Global ? props.data.Global.TotalDeaths : null;
+  const totalDeaths =
+    selectedCountry === "Global" && props.data.Global
+      ? props.data.Global.TotalDeaths
+      : getCountryData.length > 0
+      ? getCountryData[0].TotalDeaths
+      : "Loading";
 
-  const totalRecovered = props.data.Global
-    ? props.data.Global.TotalRecovered
-    : null;
+  const totalRecovered =
+    selectedCountry === "Global" && props.data.Global
+      ? props.data.Global.TotalRecovered
+      : getCountryData.length > 0
+      ? getCountryData[0].TotalRecovered
+      : "Loading";
 
   const activeCases = props.data.Global
     ? totalConfirmed - totalRecovered - totalDeaths
     : null;
 
-  const newCases = props.data.Global ? newConfirmed : "Loading...";
-  const totalCases = props.data.Global ? totalConfirmed : "Loading...";
-  const totalActiveCases = props.data.Global ? activeCases : "Loading...";
-  const dateUpdated = props.data.Date ? props.data.Date : "Loading...";
+  const newCases = props.data ? newConfirmed : "Loading...";
+  const totalCases = props.data ? totalConfirmed : "Loading...";
+  const totalActiveCases = props.data ? activeCases : "Loading...";
+  const dateUpdated =
+    selectedCountry === "Global"
+      ? props.data.Date
+      : getCountryData.length > 0
+      ? getCountryData[0].Date
+      : "No Date Available";
 
   return (
     <div id="data-display-container">
