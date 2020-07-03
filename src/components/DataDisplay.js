@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import Chart from "./Chart";
 
 const DataDisplay = (props) => {
+  const [getCountryData, setGetCountryData] = useState([]);
+  //const [newConfirmed, setNewConfirmed] = useState("");
   console.log("DataDisplay props: ", props);
+  console.log("getCountryData", getCountryData);
+  const selectedCountry = props.selectedCountry ? props.selectedCountry : null;
 
-  const newConfirmed = props.data.Global
-    ? props.data.Global.NewConfirmed
-    : null;
+  useEffect(() => {
+    const dataObj =
+      props.data.Countries && selectedCountry
+        ? props.data.Countries.filter(
+            (country) => country.Country === selectedCountry
+          )
+        : "";
+    setGetCountryData(dataObj);
+    console.log("dataObj======", dataObj);
+  }, [props.selectedCountry]);
+
+  const newConfirmed =
+    selectedCountry === "Global" && props.data.Global
+      ? props.data.Global.NewConfirmed
+      : getCountryData.length > 0
+      ? getCountryData[0].NewConfirmed
+      : "Loading";
+
+  //const newConfirmed = 10;
 
   const totalConfirmed = props.data.Global
     ? props.data.Global.TotalConfirmed
