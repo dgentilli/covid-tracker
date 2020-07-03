@@ -9,16 +9,26 @@ import Chart from "./Chart";
 const DataDisplay = () => {
   const dispatch = useDispatch();
 
+  const countryReduxState = useSelector((state) => state.countryReducer);
+  const { selectedCountry, countryData } = countryReduxState
+    ? countryReduxState
+    : null;
+
+  console.log(
+    "countryData.Global form DataDisplay: ",
+    countryData.Global.NewConfirmed
+  );
+  //const global = countryData.Global ? countryData.Global : null;
+  // console.log("countryData.Global from datadisplay: ", global);
+  // console.log("countryData: ", countryData);
+
   useEffect(() => {
     const getData = async () => {
       const data = await getSummary();
       dispatch(actions.setCountryData(data));
     };
-    getData();
-  }, []);
-  const countryReduxState = useSelector((state) => state.countryReducer);
-  const { selectedCountry, countryData } = countryReduxState;
-  console.log("countryData.Global from datadisplay: ", countryData.Global);
+    //getData();
+  }, [selectedCountry]);
 
   // const newConfirmed =
   //   countryData && selectedCountry === "Worldwide"
