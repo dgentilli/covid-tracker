@@ -1,16 +1,24 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import DataDisplay from "./DataDisplay";
-import { getSummary, getCountryList } from "../api/fetchDataApi";
 
 const DisplayControl = (props) => {
+  const [selectedCountry, setSelectedCountry] = useState("Global");
   console.log("displayControl props", props);
+
+  const handleChange = (e) => {
+    setSelectedCountry(e.target.value);
+  };
+
+  useEffect(() => {
+    console.log("useEffect selectedCountry", selectedCountry);
+  }, []);
 
   return (
     <div>
       <div className="pulldown-container">
         <div>
           <h1>COVID TRACKER</h1>
-          <select>
+          <select value={selectedCountry} onChange={handleChange}>
             <option>Global</option>
             {props.countries
               ? props.countries.map((country, key) => (
@@ -22,7 +30,11 @@ const DisplayControl = (props) => {
           </select>
         </div>
       </div>
-      <DataDisplay data={props.data} countries={props.countries} />
+      <DataDisplay
+        selectedCountry={selectedCountry}
+        data={props.data}
+        countries={props.countries}
+      />
     </div>
   );
 };
