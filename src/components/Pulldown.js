@@ -13,18 +13,18 @@ const Pulldown = (props) => {
     setCountryList(countryMap);
   }, [props.countries]);
   return (
-    <div className="pulldown-container">
-      <select>
-        <option>Global</option>
-        {countryList
-          ? countryList.map((country, key) => (
-              <option key={key} value={country}>
-                {country}
-              </option>
-            ))
-          : ""}
-      </select>
-    </div>
+    // <div className="pulldown-container">
+    //   <select>
+    //     <option>Global</option>
+    //     {countryList
+    //       ? countryList.map((country, key) => (
+    //           <option key={key} value={country}>
+    //             {country}
+    //           </option>
+    //         ))
+    //       : ""}
+    //   </select>
+    // </div>
   );
 };
 export default Pulldown;

@@ -1,23 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import DataDisplay from "./DataDisplay";
 import { getSummary, getCountryList } from "../api/fetchDataApi";
 
 const DisplayControl = (props) => {
-  const [countries, setCountries] = useState([]);
-  const [data, setData] = useState([]);
+  console.log("displayControl props", props);
 
-  useEffect(() => {
-    const getData = async () => {
-      const summaryData = await getSummary();
-      const countryList = await getCountryList();
-      setCountries(countryList);
-      setData(summaryData);
-    };
-    getData();
-  }, []);
   return (
     <div>
-      <DataDisplay data={data} countries={countries} />
+      <div className="pulldown-container">
+        <div>
+          <h1>COVID TRACKER</h1>
+          <select>
+            <option>Global</option>
+            {props.countries
+              ? props.countries.map((country, key) => (
+                  <option key={key} value={country}>
+                    {country}
+                  </option>
+                ))
+              : ""}
+          </select>
+        </div>
+      </div>
+      <DataDisplay data={props.data} countries={props.countries} />
     </div>
   );
 };

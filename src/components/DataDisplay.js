@@ -1,7 +1,6 @@
 import React from "react";
 import Card from "./Card";
 import Chart from "./Chart";
-import Pulldown from "./Pulldown";
 
 const DataDisplay = (props) => {
   console.log("DataDisplay props: ", props);
@@ -32,8 +31,6 @@ const DataDisplay = (props) => {
   return (
     <div id="data-display-container">
       <div className="top">
-        <h1>COVID TRACKER</h1>
-        <Pulldown countries={props.countries} />
         <div className="top-card-container">
           <Card title={"New Cases"} data={newCases} updated={dateUpdated} />
           <Card title={"Total Cases"} data={totalCases} updated={dateUpdated} />

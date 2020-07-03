@@ -34,6 +34,7 @@ code {
 
 .pulldown-container {
   text-align: center;
+  background-color: #ffea08;
 }
 
 .pulldown-container select {
