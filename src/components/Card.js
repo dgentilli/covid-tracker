@@ -7,7 +7,7 @@ const CardContainer = styled.div`
 `;
 
 const Title = styled.h3`
-  color: white;
+  color: #fff;
 `;
 
 const DataField = styled.h2`

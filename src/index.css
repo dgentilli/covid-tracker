@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(88, 76, 76);
 }
 
 h1 {
@@ -61,7 +62,7 @@ select:focus {
 .center {
   grid-area: center;
   text-align: center;
-  background: linear-gradient(180deg, #ccc, #ddd);
+  background: linear-gradient(180deg, #ccc, #ddd, rgb(88, 76, 76));
 }
 
 .side-d {
