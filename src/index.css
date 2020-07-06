@@ -82,6 +82,16 @@ select:focus {
   border-radius: 4px;
 }
 
+@media only screen and (max-width: 1030px) {
+  #data-display-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .side-r {
+    height: 300px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   #data-display-container {
     display: flex;
