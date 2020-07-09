@@ -25,7 +25,7 @@ const Card = (props) => {
     <div>
       <CardContainer>
         <Title>{title}</Title>
-        <DataField>{data}</DataField>
+        <DataField>{data ? data.toLocaleString() : ""}</DataField>
         <Updated>Last Update: {updated}</Updated>
       </CardContainer>
     </div>
