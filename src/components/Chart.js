@@ -27,6 +27,10 @@ const Chart = (props) => {
       }}
     />
   );
-  return <div>{activeCases ? doughnut : "Loading..."}</div>;
+  return (
+    <div className="chart-container">
+      {activeCases ? doughnut : "Loading..."}
+    </div>
+  );
 };
 export default Chart;
