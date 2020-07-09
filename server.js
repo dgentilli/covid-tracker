@@ -1,9 +1,6 @@
 const express = require("express");
 const app = express();
 
-//// Dotenv: read .env vars into Node (process.env)
-require("dotenv").config();
-
 //// Production build
 const path = require("path");
 
