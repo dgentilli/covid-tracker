@@ -24,7 +24,7 @@ const DataDisplay = (props) => {
       ? props.data.Global.NewConfirmed
       : getCountryData.length > 0
       ? getCountryData[0].NewConfirmed
-      : "Loading";
+      : "Loading...";
 
   //const newConfirmed = 10;
 
@@ -33,25 +33,25 @@ const DataDisplay = (props) => {
       ? props.data.Global.TotalConfirmed
       : getCountryData.length > 0
       ? getCountryData[0].TotalConfirmed
-      : "Loading";
+      : "Loading...";
 
   const totalDeaths =
     selectedCountry === "Global" && props.data.Global
       ? props.data.Global.TotalDeaths
       : getCountryData.length > 0
       ? getCountryData[0].TotalDeaths
-      : "Loading";
+      : "Loading...";
 
   const totalRecovered =
     selectedCountry === "Global" && props.data.Global
       ? props.data.Global.TotalRecovered
       : getCountryData.length > 0
       ? getCountryData[0].TotalRecovered
-      : "Loading";
+      : "Loading...";
 
   const activeCases = props.data.Global
     ? totalConfirmed - totalRecovered - totalDeaths
-    : null;
+    : "Loading...";
 
   const newCases = props.data ? newConfirmed : "Loading...";
   const totalCases = props.data ? totalConfirmed : "Loading...";
