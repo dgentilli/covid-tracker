@@ -15,11 +15,12 @@ CLIENT-SIDE code:
 - Components: DisplayControl, DataDisplay, Chart, Card, and Pulldown.
 - styling for desktop and mobile.
 
-left off here
-
 ## Reference Materials
 
 - For details on the API see the following documentation https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#00030720-fae3-4c72-8aea-ad01ba17adf8
+
+- The documenation for React ChartJS is available at https://www.npmjs.com/package/react-chartjs-2
+  and \* http://jerairrest.github.io/react-chartjs-2/
 
 #### MERN: Combining Client-Side and Server-Side Code
 
