@@ -1,5 +1,6 @@
 /**
- * API Documentation located at https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#00030720-fae3-4c72-8aea-ad01ba17adf8
+ * Details on the API documenation can be found in the References section of
+ * the README.md file for this project.
  */
 
 const BASE_URL = "https://api.covid19api.com";

@@ -1,68 +1,146 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# COVID Tracker - React w/ 3rd Party API
 
-## Available Scripts
+## Summary
 
-In the project directory, you can run:
+This application can be used to check for unofficial updates to the number of COVID cases by country around the world. It is built with React, an Express server, a 3rd Party API, and React ChartJS.
 
-### `npm start`
+This repo includes SERVER-SIDE code for:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- running server;
+- pulling data from API.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+CLIENT-SIDE code:
 
-### `npm test`
+- 'client' directory with React app, created using [Create React App](https://github.com/facebook/create-react-app)
+- Components: DisplayControl, DataDisplay, Chart, Card, and Pulldown.
+- styling for desktop and mobile.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+left off here
 
-### `npm run build`
+## Reference Materials
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- For details on the API see the following documentation https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest#00030720-fae3-4c72-8aea-ad01ba17adf8
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### MERN: Combining Client-Side and Server-Side Code
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [How to get 'create-react-app' to work with your API](https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/) (~15-min read) -- this is a thorough guide for bringing client and server code together. It addresses file structure, using concurrently to run server and client simultaneously and implementing a proxy for API requests (read more below)
+- [Proxying API Requests in Development](https://facebook.github.io/create-react-app/docs/proxying-api-requests-in-development) -- a proxy is needed for the client to fetch from the server using a relative path and to avoid a CORS error.
 
-### `npm run eject`
+#### Input and Events in React
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [React: Forms](https://reactjs.org/docs/forms.html)
+- [React: Handling Events](https://reactjs.org/docs/handling-events.html)
+- [How to Work with Forms, Inputs and Events in React](https://medium.com/capital-one-tech/how-to-work-with-forms-inputs-and-events-in-react-c337171b923b)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### State and Lifecycle
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [React Components: State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html) - it's a common pattern to use state to keep input values in sync between user and client. This helps ensure that accurate information is refelcted in the UI and sent to the server for an AJAX call. See the following example implementation of **state** with **fetching and processing data from the server**: [State Updates are Merged](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-are-merged)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Lists using map() in React
 
-## Learn More
+- [React: Lists and Keys](https://reactjs.org/docs/lists-and-keys.html) - patterns for displaying a list of items in React using **map()**. Items can be simple, such as the numbers example on the top. They can also be more complex, mapping items from a list and displaying multiple properties from a data set in a unique "ListItem" component. See this example: [Embedding map() in JSX](https://reactjs.org/docs/lists-and-keys.html#embedding-map-in-jsx).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### AJAX and React Fetch
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React: AJAX and APIs](https://reactjs.org/docs/faq-ajax.html) - includes example using **fetch()** and the React Component lifecycle method **componentDidMount()**.
+- [React: Fetching Data with AJAX Requests](https://facebook.github.io/create-react-app/docs/fetching-data-with-ajax-requests)
+- [MDN: Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) - how to use the **fetch() method**, how it uses Promises, and differs from jQuery AJAX, etc.
 
-### Code Splitting
+## Prerequisites
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Node
+- NPM
 
-### Analyzing the Bundle Size
+```
+$ node -v
+$ npm -v
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- React
 
-### Making a Progressive Web App
+## Installing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Steps for getting a local development env running
 
-### Advanced Configuration
+### 1 - Install dependencies
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Install node modules:
 
-### Deployment
+```
+$ cd covid-tracker
+$ npm install
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### 2 - Git & Gitignore file
 
-### `npm run build` fails to minify
+Initialize Git in local repo:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+git init
+```
+
+Create **.gitignore** file (if it doesn't already exist)
+
+```
+touch .gitignore
+echo "/node_modules" >> .gitignore
+echo ".DS_Store" >> .gitignore
+```
+
+Create a new empty remote git project (ex - on GitLab)
+
+Add remote branch to local repo & push to remote
+
+```
+git remote add origin git@gitlab.com:YOUR-PROJECT-URL.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+```
+
+## Running locally
+
+### Run client and server simultaneously
+
+From the root directory, enter the following command to run the client and server scripts, using the [concurrently](https://www.npmjs.com/package/concurrently) node module:
+
+```
+$ npm run dev
+```
+
+### Run server
+
+From the root directory:
+
+```
+$ node server.js
+```
+
+The following messages should display in the terminal:
+
+```
+Server running on port 5000
+
+```
+
+### Run client
+
+From the root directory:
+
+```
+npm start
+```
+
+React app will open on in browser: http://localhost:3000/
+
+## Usage
+
+## Built With
+
+- React
+- Node
+- Express
+
+## Authors
+
+Dave Gentilli
